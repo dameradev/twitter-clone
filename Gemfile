@@ -22,8 +22,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors', '~> 2.5'
-  gem 'guard', '~> 2.15'
-  gem 'guard-livereload', '~> 2.5', '>= 2.5.2', require: false
+
 end
 
 group :test do
@@ -38,3 +37,4 @@ gem 'bulma-rails', '~> 0.7.2'
 gem 'simple_form', '~> 4.1'
 gem 'gravatar_image_tag', '~> 1.2'
 gem 'devise', '~> 4.5'
+gem 'acts_as_votable', '~> 0.12.0'

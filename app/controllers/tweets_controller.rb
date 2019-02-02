@@ -1,6 +1,7 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :tweet_owner, only: [:edit, :update, :destroy]
   # GET /tweets
   # GET /tweets.json
   def index
@@ -15,7 +16,7 @@ class TweetsController < ApplicationController
 
   # GET /tweets/new
   def new
-    @tweet = Tweet.new
+    @tweet = current_user.tweets.build
   end
 
   # GET /tweets/1/edit
@@ -25,7 +26,7 @@ class TweetsController < ApplicationController
   # POST /tweets
   # POST /tweets.json
   def create
-    @tweet = Tweet.new(tweet_params)
+    @tweet = current_user.tweets.build(tweet_params)
 
     respond_to do |format|
       if @tweet.save
@@ -67,6 +68,13 @@ class TweetsController < ApplicationController
     def set_tweet
       @tweet = Tweet.find(params[:id])
     end
+
+    def tweet_owner
+    unless @tweet.user_id == current_user.id
+     flash[:alert] = 'Access denied as you are not owner of this tweet'
+     redirect_to tweets_path
+    end
+   end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tweet_params
