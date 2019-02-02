@@ -1,0 +1,3 @@
+$('.tweet-<%= @tweet.id %>').html('<%= @tweet.get_likes.size %>');
+$("#like_<%= @tweet.id %>").children().removeClass('fa fa-heart').addClass('fa fa-heart-o');
+$("#like_<%= @tweet.id %>").attr("href", '/tweets/<%= @tweet.id %>/like');
