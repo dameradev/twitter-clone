@@ -1,3 +1,4 @@
+
 @import 'bulma';
 
 .navbar-brand .title {
@@ -11,6 +12,17 @@
 		border-radius: 50%;
 	}
 }
+
+
 .notification:not(:last-child) {
 	margin-bottom: 0;
+}
+
+
+.profile-main {
+	margin: 0;
+	padding:0;
+}
+.profile-stats {
+	margin-top: 200px;
 }

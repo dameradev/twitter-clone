@@ -1,6 +1,32 @@
-<%= @user.name %>
-<%= @user.id %>
-<%= @current_user.name %>
-
-<%= link_to "Follow", follow_user_path(@user) %>
-<%= link_to "UnFollow", unfollow_user_path(@user) %>
+<div class="columns" style="height:19rem" >
+  <div class="column is-one-quarter profile-main is-clipped">
+    <div style="height:100%"><%= image_tag("profile.jpg") %></div>
+  </div>
+  <div class="column is-three-thirds profile-main">
+    <article class="tile is-child notification"  style="height:100%">
+      <p class="title"><%= @user.name %></p>
+      <p class="subtitle">Aligned with the right tile</p>
+      <div class="content columns">
+        <div class="column is-one-quarter" >
+          <p class="heading">Tweets</p>
+          <p class="title">3,456</p>
+          <p class="heading">Following</p>
+          <p class="title">123</p>
+        </div>
+        <div class="column is-one-quarter">
+          <p class="heading">Followers</p>
+          <p class="title">456K</p>
+          <p class="heading">Likes</p>
+          <p class="title">789</p>
+        </div>
+        <div class="content">
+          <% if current_user.following?(@user)%>
+            <%= link_to "Following", unfollow_user_path(@user), class: "button is-danger" %>
+          <% elsif (@current_user != @user) %>
+            <%= link_to "Follow", follow_user_path(@user), class: "button is-success" %>
+          <% end %>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>

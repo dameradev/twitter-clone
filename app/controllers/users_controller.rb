@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @current_user.follow(@user)
     @follow = Follow.find_by(follower: @current_user, followable: @user)
     respond_to do |format|
-      format.html {redirect_to @user}
+      format.html {redirect_to @user, notice: "You've started following @#{@user.username}"}
       format.js
     end
   end
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def unfollow
     @current_user.stop_following(@user)
     respond_to do |format|
-      format.html {redirect_to @user}
+      format.html {redirect_to @user, alert: "You've unfollowed @#{@user.username}"}
       format.js
     end
   end
