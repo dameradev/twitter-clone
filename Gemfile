@@ -2,15 +2,17 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
+gem 'rails', '~> 5.2.1'
 
-gem 'rails', '~> 5.2.2'
-gem 'sqlite3'
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
+
+
+gem 'sqlite3'
+gem 'turbolinks', '~> 5.1', '>= 5.1.1'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'turbolinks'
 
 
 group :development, :test do
@@ -40,4 +42,3 @@ gem 'devise', '~> 4.5'
 gem 'acts_as_votable', '~> 0.12.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
-gem 'bootstrap-sass', '~> 3.4'
