@@ -1,0 +1,6 @@
+<%= @user.name %>
+<%= @user.id %>
+<%= @current_user.name %>
+
+<%= link_to "Follow", follow_user_path(@user) %>
+<%= link_to "UnFollow", unfollow_user_path(@user) %>

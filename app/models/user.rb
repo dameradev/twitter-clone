@@ -5,5 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :tweets
-  acts_as_voter  
+  acts_as_voter
+
+  acts_as_followable
+  acts_as_follower
 end
