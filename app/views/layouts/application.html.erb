@@ -44,7 +44,7 @@
               </p>
               <% if user_signed_in? %>
                 <p class="control">
-                   <%= link_to current_user.name, edit_user_registration_path, class: "button is-info" %>
+                   <%= link_to current_user.name, user_path(current_user), class: "button is-info" %>
                 </p>
                 <p class="control">
                    <%= link_to "Logout",  destroy_user_session_path, method: :delete, class: "button is-info" %>
@@ -65,7 +65,13 @@
         </div>
       </div>
     </nav>
-
+    <script type="text/javascript">
+      $(document).ready(function(){
+        setTimeout(function(){
+          $('.flash').slideUp();
+        }, 5000);
+       })
+    </script>
     <%= yield %>
   </body>
 </html>

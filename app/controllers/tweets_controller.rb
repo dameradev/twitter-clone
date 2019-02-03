@@ -1,12 +1,13 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy, :like, :unlike]
-  before_action :authenticate_user!, except: [:index, :show]
+
   before_action :tweet_owner, only: [:edit, :update, :destroy]
   # GET /tweets
   # GET /tweets.json
   def index
     @tweets = Tweet.all.order("created_at DESC")
     @tweet = Tweet.new
+    @users = User.all.limit(5).shuffle
   end
 
   # GET /tweets/1

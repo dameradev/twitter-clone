@@ -9,21 +9,23 @@
       <div class="content columns">
         <div class="column is-one-quarter" >
           <p class="heading">Tweets</p>
-          <p class="title">3,456</p>
+          <p class="title"><%= @user.tweets.count %></p>
           <p class="heading">Following</p>
-          <p class="title">123</p>
+          <p class="title"><%= @user.follow_count %></p>
         </div>
         <div class="column is-one-quarter">
           <p class="heading">Followers</p>
-          <p class="title">456K</p>
+          <p class="title"><%= @user.followers_count %></p>
           <p class="heading">Likes</p>
-          <p class="title">789</p>
+          <p class="title"><%= @user.find_liked_items.size %></p>
         </div>
         <div class="content">
           <% if current_user.following?(@user)%>
             <%= link_to "Following", unfollow_user_path(@user), class: "button is-danger" %>
           <% elsif (@current_user != @user) %>
             <%= link_to "Follow", follow_user_path(@user), class: "button is-success" %>
+          <% elsif (@current_user == @user) %>
+            <%= link_to "Edit Account", edit_user_registration_path(current_user), class: "button is-info" %>
           <% end %>
         </div>
       </div>
